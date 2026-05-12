@@ -1,16 +1,52 @@
-import LoginForm from "./components/LoginForm";
-import LogoSection from "./components/LogoSection";
-
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import ProductsPage from "./pages/ProductsPage";
+import MovementsPage from "./pages/MovementsPage";
+import InventoryPage from "./pages/InventoryPage";
 
 export default function App() {
+
+
   return (
     <>
-      
-      <div className="min-h-screen bg-grey-950 grid grid-cols-1 lg:grid-cols-2 items-center">
-        <LogoSection/>
-        <LoginForm
+      <Routes>
+        <Route 
+          path="/"
+          element={<LoginPage/>}
         />
-      </div>
+
+        <Route 
+          path="/Dashboard"
+          element={
+            <ProtectedRoute>
+              <DashboardPage>
+                
+              </DashboardPage>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route 
+          path="/inventory"
+          element={<InventoryPage/>}
+        />
+
+        <Route 
+          path="/products"
+          element={<ProductsPage/>}
+        />
+
+        <Route 
+          path="/movements"
+          element={<MovementsPage/>}
+        />
+
+
+        
+      </Routes>
+    
 
     </>
   )

@@ -1,18 +1,26 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function LoginForm() {
 
     const[email,setEmail] = useState ('')
     const[password,setPassword] = useState ('')
+    const navigate = useNavigate()
+    const auth = true
+    localStorage.setItem('auth', 'true')
 
-    const handleSubmit = ((e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    const handleSubmit = ((e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
+        if (auth) {
+            navigate ( '/Dashboard')
+        }else {
+            navigate( '/')
+        }
     })
 
     return (
         <>
-            <form className="p-10 max-w-md mx-auto ">
+            <form className="p-10 max-w-md mx-auto " onSubmit={handleSubmit}>
                 <legend className=" text-3xl font-bold text-white mb-8 text-center ">
                     Inicia Sesion en PickPro
                 </legend>
@@ -42,12 +50,11 @@ export default function LoginForm() {
                     />
                 </div>
                 <div className="flex flex-col ">
-                    <input 
-                    type="submit"
-                    value='Iniciar Sesion'
-                    className=" bg-amber-600 hover:bg-amber-700 text-xl font-bold text-white p-3 rounded-lg mt-8 uppercase" 
-                    onClick={handleSubmit}                           
-                    />
+                    <button
+                        type="submit"
+                        className=" bg-amber-600 hover:bg-amber-700 text-xl font-bold text-white p-3 rounded-lg mt-8 uppercase" 
+                    > Iniciar Sesion
+                    </button>
                 </div>
             
             </form>

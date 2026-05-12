@@ -2,7 +2,7 @@
 export default function LogoSection() {
     return (
         <>
-            <div className="border-3 lg:border-r-slate-600">
+            <div className="">
                 <img src="/public/LogoPickPro.png" alt="Imagen de Nuestro Logo" />
             </div> 
         </>

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import Sidebar from '../components/Sidebar.tsx'
-
+import Sidebar from '../Sidebar.tsx'
+import Navbar from './Navbar.tsx'
 export type DashboardLayoutProps = {
     children: ReactNode
 }
@@ -11,7 +11,10 @@ export default function DashboardLayout({children}: DashboardLayoutProps) {
             <Sidebar/>
 
             <main className="flex-1 text-3xl bg-gray-200 p-10">
-                {children}
+                <Navbar />
+                <div className='mt-10'>
+                    {children}
+                </div>
             </main>
         </div>
     )

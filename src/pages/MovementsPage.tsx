@@ -1,4 +1,4 @@
-import DashboardLayout from "../layouts/DashboardLayout"
+import DashboardLayout from "../components/layouts/DashboardLayout"
 
 export default function MovementsPage() {
     return (

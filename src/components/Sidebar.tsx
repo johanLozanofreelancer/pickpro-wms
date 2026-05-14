@@ -22,11 +22,6 @@ export default function Sidebar() {
             to: '/movements',
             label: 'Movimientos',
             icon: ArrowLeftRight
-        },
-        {
-            to: '/users',
-            label: 'Usuarios',
-            icon: User
         }
     ]
     return (    

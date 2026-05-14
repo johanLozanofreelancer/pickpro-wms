@@ -16,7 +16,7 @@ export default function App() {
           path="/"
           element={<LoginPage/>}
         />
-
+  
         <Route 
           path="/Dashboard"
           element={
@@ -30,21 +30,31 @@ export default function App() {
 
         <Route 
           path="/inventory"
-          element={<InventoryPage/>}
+          element={
+            <ProtectedRoute>
+              <InventoryPage/>
+            </ProtectedRoute>
+          }
         />
 
         <Route 
           path="/products"
-          element={<ProductsPage/>}
+          element={
+            <ProtectedRoute>
+              <ProductsPage/>
+            </ProtectedRoute>
+          }
         />
 
         <Route 
           path="/movements"
-          element={<MovementsPage/>}
+          element={
+            <ProtectedRoute>
+              <MovementsPage/>
+            </ProtectedRoute>
+          }
         />
 
-
-        
       </Routes>
     
 

@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import Sidebar from '../Sidebar.tsx'
 import Navbar from './Navbar.tsx'
+
+
 export type DashboardLayoutProps = {
     children: ReactNode
 }

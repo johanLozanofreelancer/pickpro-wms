@@ -1,20 +1,29 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { workers } from "../data/workers"
 
 export default function LoginForm() {
 
     const[email,setEmail] = useState ('')
     const[password,setPassword] = useState ('')
+    const[error,setError] = useState ('')
     const navigate = useNavigate()
-    const auth = true
-    localStorage.setItem('auth', 'true')
 
     const handleSubmit = ((e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (auth) {
-            navigate ( '/Dashboard')
-        }else {
-            navigate( '/')
+        setError('')
+        
+        const worker = workers.find(w => 
+            w.email.toLowerCase() === email.toLowerCase() && 
+            w.password === password
+        )
+        
+        if (worker) {
+            localStorage.setItem('auth', 'true')
+            localStorage.setItem('user', JSON.stringify(worker))
+            navigate('/Dashboard')
+        } else {
+            setError('Credenciales inválidas')
         }
     })
 
@@ -24,6 +33,11 @@ export default function LoginForm() {
                 <legend className=" text-3xl font-bold text-white mb-8 text-center ">
                     Inicia Sesion en PickPro
                 </legend>
+                {error && (
+                    <div className="bg-red-500 text-white p-3 rounded-lg mb-4 text-center">
+                        {error}
+                    </div>
+                )}
                 <div className="flex flex-col ">
                     <label htmlFor="email" className=" text-2xl my-5 text-white ">Email</label>
                     <input 

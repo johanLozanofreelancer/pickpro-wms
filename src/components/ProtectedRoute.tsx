@@ -1,15 +1,11 @@
-import type { ReactNode } from "react"
-import { Navigate } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
 
-export type ProtectedRouteProps = {
-    children : ReactNode
-}
 
-export default function ProtectedRoute({children}: ProtectedRouteProps ) {
+export default function ProtectedRoute() {
     const isAuth = (localStorage.getItem('auth') )
 
     if(!isAuth){
         return <Navigate to='/' /> 
     }
-    return children
+    return <Outlet/>
 }

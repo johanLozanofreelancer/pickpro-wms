@@ -6,13 +6,13 @@ export default function LoginForm() {
     const[email,setEmail] = useState ('')
     const[password,setPassword] = useState ('')
     const navigate = useNavigate()
-    const auth = true
-    localStorage.setItem('auth', 'true')
 
     const handleSubmit = ((e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        const auth = true
+        localStorage.setItem('auth', 'true')
         if (auth) {
-            navigate ( '/Dashboard')
+            navigate ( '/dashboard')
         }else {
             navigate( '/')
         }
